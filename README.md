@@ -146,24 +146,47 @@ The frontend will be running on `http://localhost:3000`
 
 ## 🚀 Deployment
 
-### Backend Deployment (Render/Railway)
-1. Connect your GitHub repository
-2. Set environment variables:
-   - `MONGODB_URI`: Your MongoDB Atlas connection string
-   - `NODE_ENV`: production
-3. Deploy
+### MongoDB Atlas Setup (Required First)
+1. Go to [MongoDB Atlas](https://cloud.mongodb.com)
+2. Create a free account and cluster
+3. Create a database user with read/write permissions
+4. Add IP address `0.0.0.0/0` to Network Access (allows access from anywhere)
+5. Get your connection string from "Connect" → "Connect your application"
+6. Replace `<username>`, `<password>`, and `<dbname>` with your actual values
 
-### Frontend Deployment (Vercel/Netlify)
-1. Connect your GitHub repository
-2. Set environment variables:
-   - `REACT_APP_API_URL`: Your deployed backend URL
-3. Deploy
+### Backend Deployment (Render)
+1. Go to [Render Dashboard](https://dashboard.render.com)
+2. Click "New +" → "Web Service"
+3. Connect your GitHub repository
+4. Configure:
+   - **Name**: `figma-backend`
+   - **Root Directory**: `backend`
+   - **Environment**: `Node`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+5. Add Environment Variables:
+   - `NODE_ENV` = `production`
+   - `MONGODB_URI` = `mongodb+srv://yourusername:yourpassword@cluster0.abc123.mongodb.net/figma-assignment?retryWrites=true&w=majority&authSource=admin`
+6. Click "Create Web Service"
+7. Wait for deployment and copy the backend URL
 
-### MongoDB Atlas Setup
-1. Create a MongoDB Atlas account
-2. Create a new cluster
-3. Get your connection string
-4. Update the `MONGODB_URI` in your backend environment variables
+### Frontend Deployment (Render)
+1. Go to [Render Dashboard](https://dashboard.render.com)
+2. Click "New +" → "Static Site"
+3. Connect your GitHub repository
+4. Configure:
+   - **Name**: `figma-frontend`
+   - **Root Directory**: `frontend`
+   - **Build Command**: `npm install && npm run build`
+   - **Publish Directory**: `build`
+5. Add Environment Variable:
+   - `REACT_APP_API_URL` = `https://your-backend-service-name.onrender.com`
+6. Click "Create Static Site"
+
+### Important Notes
+- Replace `yourusername`, `yourpassword`, and `abc123` with your actual MongoDB Atlas credentials
+- The backend URL will be something like `https://figma-backend-xxxx.onrender.com`
+- Make sure to use the exact backend URL (including the random suffix) for the frontend environment variable
 
 ## 🧪 Testing the Application
 

@@ -1,0 +1,31 @@
+{
+  "name": "figma-assignment-fullstack",
+  "version": "1.0.0",
+  "description": "Full-stack Figma Assignment application with React frontend and Node.js backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node start.js",
+    "start:frontend": "cd frontend && npm start",
+    "start:backend": "cd backend && npm start",
+    "start:dev": "node start.js",
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm start",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "react",
+    "nodejs",
+    "express",
+    "mongodb",
+    "figma",
+    "fullstack"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}
